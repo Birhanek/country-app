@@ -1,13 +1,15 @@
-import React from 'react'
-import { Counter } from './components/Counter'
-import './App.css'
+import React from 'react';
+
+// project specific imports
+import './App.css';
+import CountryIndex from './routes/CountryIndex';
 
 function App() {
   return (
     <div className="App">
-      <Counter />
+     <CountryIndex/>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
