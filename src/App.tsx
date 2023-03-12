@@ -6,7 +6,7 @@ import CountryIndex from './routes/CountryIndex';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
      <CountryIndex/>
     </div>
   );

@@ -36,7 +36,7 @@ export interface  CountryState {
     countryState: CountryInfo[],
     isLoading:boolean,
     isError:boolean,
-    message:string
+    message?:string
 }
 interface CountryInfo {
    name:Name,

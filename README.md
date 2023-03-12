@@ -15,7 +15,8 @@ The front end project is to practice React with TypeScript and Redux. Completing
 ## Logic Requirements (9 points)
 
 1. Fetch data from this API: `https://restcountries.com/v3.1/all`
-2. The user can search country by name
+2. The user can search country by name:
+        ```Do the searching on the available data from fetching the All data ```
 3. Get country detail by this API: `https://restcountries.com/v3.1/name/{name}`
 4. When the user click to country name or a button it should show country detail
 5. The country detail should have name, region, population, flag and list of languages
