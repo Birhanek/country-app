@@ -21,7 +21,14 @@ export const countrySlice = createSlice({
                 return (country.name.common.toLowerCase().includes(action.payload.toLowerCase())
                 || country.name.official.toLowerCase().includes(action.payload.toLowerCase()))
             })
+        },
+        searchByRegion:(state,action:PayloadAction<string>)=>{
+            console.log(action.payload)
+            state.countryState = state.countryState.filter((country:CountryInfo)=>{
+                return country.region.toLowerCase() === action.payload.toLowerCase()
+            })
         }
+
     },
     extraReducers(builder) {
         builder.addCase(getAllCountries.pending,(state) => {
@@ -45,6 +52,6 @@ export const countrySlice = createSlice({
 
 })
 
-export const {searchByName} = countrySlice.actions
+export const {searchByName, searchByRegion} = countrySlice.actions
 
 export default countrySlice.reducer

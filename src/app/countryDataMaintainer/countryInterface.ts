@@ -32,6 +32,11 @@ export interface PostalCode {
     regex:string
 }
 
+export interface CountryProps {
+    country:CountryInfo,
+    key:number
+}
+
 export interface  CountryState {
     countryState: CountryInfo[],
     isLoading:boolean,
@@ -63,7 +68,7 @@ interface CountryInfo {
    demonyms:{[key:string]:Demonyms},
    flag:string,
    maps:{[key:string]:string},
-   population:bigint,
+   population:number,
    gini:{[key:string]:number},
    fifa:string,
    car:CarDirection,
