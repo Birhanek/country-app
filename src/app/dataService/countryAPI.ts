@@ -20,7 +20,7 @@ export const getAllCountries = createAsyncThunk(
 
 // getting country by name
 export const getCountryByName = createAsyncThunk(
-    'country/getCountryByName',async(name:string,thunkApi) => {
+    'country/getCountryByName',async(name:string|undefined,thunkApi) => {
         const response = await axios.get(`${BASE_URL}/v3.1/name/${name}`)
         const data:CountryInfo[] = await response.data
         return data

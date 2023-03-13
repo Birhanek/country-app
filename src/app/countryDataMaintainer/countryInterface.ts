@@ -43,6 +43,16 @@ export interface  CountryState {
     isError:boolean,
     message?:string
 }
+
+export enum Continents {
+    Africa = "Africa",
+    Antarctica = "Antarctica",
+    Asia = "Asia",
+    Europe = "Europe",
+    NorthAmerica = "North America",
+    Oceania = "Oceania",
+    SouthAmerica = "South America"  
+}
 interface CountryInfo {
    name:Name,
    tld:string[],

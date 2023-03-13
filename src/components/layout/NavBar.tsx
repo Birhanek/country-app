@@ -1,6 +1,7 @@
 
 import React from 'react'
 import {FaBuffer, FaHeart, FaHome} from "react-icons/fa";
+import { GiWireframeGlobe } from "react-icons/gi";
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
@@ -12,6 +13,7 @@ const NavBar = () => {
       </div>
       <div className='navigation-links'>
         <Link to='/'><FaHome/></Link>
+        <Link to='/countries'><GiWireframeGlobe/></Link>
         <Link to='/favorite'><FaHeart/></Link> 
         <label className='switch'>
           <input type="checkbox" />
