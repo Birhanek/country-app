@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import CountryInfo, {CountryState} from "../../app/countryDataMaintainer/countryInterface"
+import CountryInfo, {CountryState, FavoriteCountry} from "../../app/countryDataMaintainer/countryInterface"
 import { getAllCountries, getCountriesByRegion, getCountryByName } from "../../app/dataService/countryAPI"
 
 
@@ -8,7 +8,9 @@ const initialState:CountryState = {
     countryState: [],
     isLoading:false,
     isError:false,
-    message:''
+    message:'',
+    favoriteCount:0,
+    favoriteCountry:[]
 }
 
 
@@ -26,6 +28,19 @@ export const countrySlice = createSlice({
             state.countryState = state.countryState.filter((country:CountryInfo)=>{
                 return country.region.toLowerCase() === action.payload.toLowerCase()
             })
+        },
+        IncrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
+            state.favoriteCountry.push(action.payload.country)
+            state.favoriteCount += action.payload.count
+        },
+        DecrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
+            //const index:number = state.favoriteCountry.map((favorite)=>favorite.name.official).indexOf(action.payload.country.name.official)
+            // Due to slow performance in large arrays 
+            const index:number = state.favoriteCountry.findIndex(favorite=>favorite.name.official === action.payload.country.name.official)
+            state.favoriteCountry.splice(index,1)
+            state.favoriteCount -= action.payload.count
+           // state.favoriteCountry.filter((favorite)=>)
+          
         }
 
     },
@@ -90,6 +105,6 @@ export const countrySlice = createSlice({
 
 })
 
-export const {searchByName, searchByRegion} = countrySlice.actions
+export const {searchByName, searchByRegion,DecrementFavorite,IncrementFavorite} = countrySlice.actions
 
 export default countrySlice.reducer

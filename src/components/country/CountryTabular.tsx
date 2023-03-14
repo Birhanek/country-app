@@ -1,12 +1,35 @@
-import React from 'react'
-import { FaAngleRight } from 'react-icons/fa'
+
+import React, { useState } from 'react'
+import { FaAngleRight, FaHeart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { Languages } from '../../app/countryDataMaintainer/CountryFunctions'
-import { CountryProps } from '../../app/countryDataMaintainer/countryInterface'
+import CountryInfo, { CountryProps, FavoriteCountry } from '../../app/countryDataMaintainer/countryInterface'
+import { useAppDispatch } from '../../app/countryDataMaintainer/hooks'
+import { DecrementFavorite, IncrementFavorite } from '../../features/country/countrySlice'
 
 
 const CountryTabular = (props:CountryProps) => {
   
+
+  const dispatch = useAppDispatch()
+  const [color,setColor] = useState<string>('blue')
+  const favoriteCountryAdd =(country:CountryInfo)=>{
+    
+    const favorite: FavoriteCountry ={
+      count:1,
+      country:country
+    }
+    if(color === 'blue'){
+      setColor('black')
+      dispatch(IncrementFavorite(favorite))
+    }
+    if(color === 'black'){
+      setColor('blue')
+      dispatch(DecrementFavorite(favorite))
+    }
+    
+  }
+
   return (
     <tr key={props.key} className=''>
       <td>{props.country.flag}</td>
@@ -20,7 +43,7 @@ const CountryTabular = (props:CountryProps) => {
         }
         </ul>
       </td>
-      <td>Love</td>
+      <td><button onClick={()=>favoriteCountryAdd(props.country)}><FaHeart className={`btn-${color}`}/></button></td>
       <td>
         <Link 
         to={`/countries/${props.country.name.official}?fullText=true`}>

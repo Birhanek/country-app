@@ -41,7 +41,9 @@ export interface  CountryState {
     countryState: CountryInfo[],
     isLoading:boolean,
     isError:boolean,
-    message?:string
+    message?:string,
+    favoriteCountry:CountryInfo[],
+    favoriteCount:number
 }
 
 export enum Continents {
@@ -52,6 +54,10 @@ export enum Continents {
     NorthAmerica = "North America",
     Oceania = "Oceania",
     SouthAmerica = "South America"  
+}
+export interface FavoriteCountry{
+    count:number,
+    country:CountryInfo
 }
 interface CountryInfo {
    name:Name,
