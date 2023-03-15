@@ -1,3 +1,4 @@
+import { Paper } from '@mui/material';
 import React from 'react';
 
 // project specific imports
@@ -6,9 +7,9 @@ import CountryIndex from './routes/CountryIndex';
 
 function App() {
   return (
-    <div className="app">
-     <CountryIndex/>
-    </div>
+      <Paper elevation={3} sx={{flexGrow:1,paddingX:1}}>
+        <CountryIndex/>
+      </Paper>
   );
 }
 
