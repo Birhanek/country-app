@@ -14,12 +14,10 @@ const Header = () => {
   const [name,setName] = useState<string>('')
   const [region,setRegion] = useState<string>('')
 
-  const searchCountryByName = ()=>{
+  const searchCountryByName = (event:React.ChangeEvent<HTMLInputElement>)=>{
+    setName(event.target.value)
     dispatch(searchByName(name))
   }
-  useEffect(()=>{
-    searchCountryByName()
-  },[name])
   const searchCountriesByRegion =(event:SelectChangeEvent)=>{
     event.preventDefault()
     setRegion(event.target.value)
@@ -36,7 +34,7 @@ const Header = () => {
                     id='search'
                     name='search'
                     value={name}
-                    onChange={(e)=>setName(e.target.value)}
+                    onChange={searchCountryByName}
                     placeholder="Search…"
                     inputProps={{ 'aria-label': 'search' }}
                   />

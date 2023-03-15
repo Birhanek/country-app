@@ -15,9 +15,10 @@ const dispatch = useAppDispatch()
 const {countryState, isLoading,isError,message} = useAppSelector((state)=>state.country) 
 const {name} = useParams()
 
-useEffect(()=>{
-dispatch(getCountryByName(name))
+  useEffect(()=>{
+  dispatch(getCountryByName(name))
 },[dispatch,name])
+
   return (
     <Container>
     <NavBar/>
