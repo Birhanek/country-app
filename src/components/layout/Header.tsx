@@ -1,6 +1,5 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { FaSearch } from 'react-icons/fa'
+import React, { useState } from 'react'
 import { Continents } from '../../app/countryDataMaintainer/countryInterface'
 import { useAppDispatch } from '../../app/countryDataMaintainer/hooks'
 import { getCountriesByRegion } from '../../app/dataService/countryAPI'
@@ -54,18 +53,6 @@ const Header = () => {
             </FormControl>
           </Grid>
         )
-       {/* <div className='header-search'>
-            <select className='select-region' value={region} onChange={searchCountriesByRegion}>
-                <option>select By region</option>
-                <option value={Continents.Africa}>{Continents.Africa}</option>
-                <option value={Continents.Antarctica}>{Continents.Antarctica}</option>
-                <option value={Continents.Asia}>{Continents.Asia}</option>
-                <option value={Continents.Europe}>{Continents.Europe}</option>
-                <option value={Continents.NorthAmerica}>{Continents.NorthAmerica}</option>
-                <option value={Continents.Oceania}>{Continents.Oceania}</option>
-                <option value={Continents.SouthAmerica}>{Continents.SouthAmerica}</option>
-            </select>
-  </div>*/}
 }
 
 export default Header
