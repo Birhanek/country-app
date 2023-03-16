@@ -89,7 +89,7 @@ interface CountryInfo {
    fifa:string,
    car:CarDirection,
    timezones:string[],
-   continent:string[],
+   continents:string[],
    flags:{[key:string]:string},
    coatOfArms:{[key:string]:string},
    startOfWeek:string,

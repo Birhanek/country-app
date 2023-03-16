@@ -23,34 +23,39 @@ const Header = () => {
     dispatch(getCountriesByRegion(region))
   }
   return (
-        <Grid container spacing={4}>
-              <FormControl>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon/>
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    id='search'
-                    name='search'
-                    value={name}
-                    onChange={searchCountryByName}
-                    placeholder="Search…"
-                    inputProps={{ 'aria-label': 'search' }}
-                  />
-                </Search>
-              </FormControl>
-            <FormControl fullWidth>
-              <InputLabel>Search By Region</InputLabel>
-              <Select labelId='select-by-region-label' id='select-by-region' value={region} onChange={searchCountriesByRegion} label='region'>
-                  <MenuItem value={Continents.Africa} >{Continents.Africa}</MenuItem>
-                  <MenuItem value={Continents.Antarctica} >{Continents.Antarctica}</MenuItem>
-                  <MenuItem value={Continents.Asia} >{Continents.Asia}</MenuItem>
-                  <MenuItem value={Continents.Europe} >{Continents.Europe}</MenuItem>
-                  <MenuItem value={Continents.NorthAmerica} >{Continents.NorthAmerica}</MenuItem>
-                  <MenuItem value={Continents.Oceania} >{Continents.Oceania}</MenuItem>
-                  <MenuItem value={Continents.SouthAmerica} >{Continents.SouthAmerica}</MenuItem>
-              </Select>
-            </FormControl>
+        <Grid container spacing={2}>
+              <Grid container item xs={12} xl={8} md={6}>
+                <FormControl>
+                  <Search>
+                    <SearchIconWrapper>
+                      <SearchIcon/>
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      id='search'
+                      name='search'
+                      value={name}
+                      onChange={searchCountryByName}
+                      placeholder="Search…"
+                      inputProps={{ 'aria-label': 'search' }}
+                    />
+                  </Search>
+                </FormControl>
+              </Grid>
+              <Grid container item xs={12} xl={4} md={6}>
+                  <FormControl>
+                  <InputLabel>Search By Region</InputLabel>
+                  <Select labelId='select-by-region-label' id='select-by-region' value={region} onChange={searchCountriesByRegion} label='region'>
+                      <MenuItem value={Continents.Africa} >{Continents.Africa}</MenuItem>
+                      <MenuItem value={Continents.Antarctica} >{Continents.Antarctica}</MenuItem>
+                      <MenuItem value={Continents.Asia} >{Continents.Asia}</MenuItem>
+                      <MenuItem value={Continents.Europe} >{Continents.Europe}</MenuItem>
+                      <MenuItem value={Continents.NorthAmerica} >{Continents.NorthAmerica}</MenuItem>
+                      <MenuItem value={Continents.Oceania} >{Continents.Oceania}</MenuItem>
+                      <MenuItem value={Continents.SouthAmerica} >{Continents.SouthAmerica}</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            
           </Grid>
         )
 }

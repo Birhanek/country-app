@@ -24,14 +24,14 @@ const {name} = useParams()
     <NavBar/>
     
     {
-     isLoading?<Loading/>:isError?<Typography variant="h2">{message}</Typography>:countryState.map((country)=><Box>
-        <Card>
+     isLoading?<Loading/>:isError?<Typography variant="h2">{message}</Typography>:countryState.map((country)=><Box sx={{width:'400',height:"auto"}}>
+        <Card className='card'>
           <CardHeader 
           avatar={<Avatar sx={{bgcolor:blue}}>{country.cca2}</Avatar>}
           action={<IconButton><MoreVert/></IconButton>}
           title={country.name.common}
-          subheader={country.continent.at(0)}/>
-          <CardMedia 
+          subheader={country.continents[0]}/>
+          <CardMedia
             component='img' 
             width='400' 
             image={country.flags["png"]} 
@@ -40,11 +40,13 @@ const {name} = useParams()
             <Typography variant="body2" color="HighlightText">
               Population: {country.population}
             </Typography>
-            {
-              Languages(country.languages).map((language)=><Stack spacing={2}>
+            <Typography variant="body2">
+               Languages: {
+              Languages(country.languages).map((language)=><Stack direction="row" spacing={2}>
                   <MenuItem>{language}</MenuItem>
               </Stack>)
-            }
+               }
+            </Typography>
           </CardContent>
         </Card>
       </Box>)

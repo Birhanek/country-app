@@ -1,11 +1,12 @@
 
 import React, { useState } from 'react'
-import {FaBuffer, FaHeart, FaHome} from "react-icons/fa";
+import {FaBuffer, FaHome} from "react-icons/fa";
 import { GiWireframeGlobe } from "react-icons/gi";
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../app/countryDataMaintainer/hooks';
 import Box from '@mui/material/Box';
-import { AppBar, FormControlLabel, FormGroup, IconButton, Switch, Toolbar, Typography } from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { AppBar, Badge, FormControlLabel, FormGroup, IconButton, Switch, Toolbar, Typography } from '@mui/material';
 
 const NavBar = () => {
   const {favoriteCount,favoriteCountry} = useAppSelector(state=>state.country)
@@ -27,9 +28,12 @@ const NavBar = () => {
           <Box sx={{display:'flex',gap:1,justifyContent:'space-between',alignItems:'center'}}>
               <Link to='/'><FaHome/></Link>
               <Link to='/countries'><GiWireframeGlobe/></Link>
-              <Link to='/favorite' state={favoriteCountry}><sup>{favoriteCount}</sup><FaHeart/></Link> 
+              <Link to='/favorite' state={favoriteCountry}>
+                <Badge badgeContent={favoriteCount} max={5} color="error">
+                      <FavoriteIcon/>
+                </Badge></Link> 
               <FormGroup>
-                <FormControlLabel label control={<Switch checked={bgControl} onChange={handleChange}/>}/>
+                <FormControlLabel label control={<Switch color="secondary" checked={bgControl} onChange={handleChange}/>}/>
               </FormGroup>
           </Box>
         </Toolbar>
