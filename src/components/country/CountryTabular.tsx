@@ -13,6 +13,7 @@ const CountryTabular = (props:CountryProps) => {
 
   const dispatch = useAppDispatch()
   const [color,setColor] = useState<string>('blue')
+
   const favoriteCountryAdd =(country:CountryInfo)=>{
     
     const favorite: FavoriteCountry ={

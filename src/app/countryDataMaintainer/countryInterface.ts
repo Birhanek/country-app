@@ -2,9 +2,7 @@ export interface Language {
     official:string,
     common:string
 }
-export interface NativeName {
 
-}
 export interface Name {
     common:string,
     official:string,

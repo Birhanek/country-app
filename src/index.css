@@ -21,3 +21,17 @@ body{
   background-color: #232323;
   box-shadow: 0rem 0rem 2rem 1.6rem rgba(3, 3, 3, 0.18);
 }
+.country-details{
+  width: 100%;
+  padding: 1rem 1rem;
+}
+.table-details{
+  width: 90%;
+}
+.table-details__head{
+  padding: 1rem;
+}
+.table-details__head tr,th{
+  font-size: 1.2rem;
+
+}

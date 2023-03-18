@@ -7,7 +7,7 @@ import CountryIndex from './routes/CountryIndex';
 
 function App() {
   return (
-      <Paper elevation={3} sx={{flexGrow:1,paddingX:1}}>
+      <Paper elevation={3} sx={{flexGrow:1,paddingX:1,marginTop:1}}>
         <CountryIndex/>
       </Paper>
   );

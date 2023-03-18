@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../app/countryDataMaintainer/hooks'
 import { getAllCountries } from '../app/dataService/countryAPI'
-import Country from '../components/country/CountryTabular'
+import CountryTabular from '../components/country/CountryTabular'
 import Loading from '../components/sideFeatures/Loading'
 
 
@@ -17,17 +17,17 @@ const Countries = () => {
   
   // 
   const countryData = countryState.map((country,index)=>{
-    return <Country key = {index}  country = {country}/>
+    return <CountryTabular key = {index}  country = {country}/>
   })
 
 
   return (
-    <div>
+    <div className="country-details">
      {
       isLoading?
       <Loading/>:isError?<p style={{background:"green",fontSize:"2rem"}}>{message}</p>:
-      <table className='country'>
-          <thead>
+      <table className='table-details'>
+          <thead className='table-details__head'>
                 <tr>
                     <th>Flag</th>
                     <th>Name</th>

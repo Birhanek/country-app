@@ -16,7 +16,7 @@ const NavBar = () => {
     setBgControl(event.target.checked)
   }
   return (
-    <Box sx={{flexGrow:1,paddingX:1}}>
+    <Box sx={{flexGrow:1}}>
       <AppBar position="sticky">
         <Toolbar sx={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
           <Box sx={{display:'flex',flexGrow:1}}>
