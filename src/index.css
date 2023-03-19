@@ -27,11 +27,38 @@ body{
 }
 .table-details{
   width: 90%;
+  border-collapse: collapse;
 }
 .table-details__head{
   padding: 1rem;
 }
 .table-details__head tr,th{
-  font-size: 1.2rem;
-
+  font-size: 1.6rem;
+  height: 4rem;
+  text-align: center;
+}
+.table-details__body{
+  padding: 1rem;
+}
+.table-details__body tr,td{
+  font-size: 1.6rem;
+  height: 4rem;
+  text-align: center;
+}
+.paginate-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.paginate{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.page{
+  background-color: grey;
+  color: red;
+  border-radius: 50%;
 }

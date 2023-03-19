@@ -1,3 +1,5 @@
+import { IconButtonProps } from "@mui/material"
+
 export interface Language {
     official:string,
     common:string
@@ -56,6 +58,18 @@ export enum Continents {
 export interface FavoriteCountry{
     count:number,
     country:CountryInfo
+}
+
+export interface ExpandMoreProps extends IconButtonProps {
+    expand:boolean
+}
+
+export interface PaginationStates {
+    dataPerPage:number,
+    totalData:number,
+    paginate:(selected:number)=> void,
+    prevPage:()=> void,
+    nextPage:()=> void
 }
 interface CountryInfo {
    name:Name,

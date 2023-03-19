@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../app/countryDataMaintainer/hooks'
 import { getCountriesByRegion } from '../../app/dataService/countryAPI'
 import { searchByName } from '../../features/country/countrySlice'
 import SearchIcon from '@mui/icons-material/Search';
-import { Search,SearchIconWrapper,StyledInputBase } from '../sideFeatures/SearchComponent'
+import { Search,SearchIconWrapper,StyledInputBase } from '../sideFeatures/StyledComponents'
 
 const Header = () => {
   

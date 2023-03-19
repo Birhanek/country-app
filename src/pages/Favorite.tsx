@@ -11,10 +11,10 @@ const Favorite = () => {
     return <CountryTabular key={index} country={favorite}/>
   })
   return (
-    <div>
+    <React.Fragment>
       <NavBar/>
      {
-      favoriteCountry.length>0?
+      favoriteCountry.length>0?<div className='country-details'>
       <table className='table-details'>
         <thead className='table-details__head'>
             <tr>
@@ -31,10 +31,11 @@ const Favorite = () => {
       }
         </tbody>
   
-    </table>:
+    </table></div>:
     <p>No favorite country selected</p>
+    
      }
-    </div>
+    </React.Fragment>
   )
 }
 

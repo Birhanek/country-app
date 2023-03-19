@@ -16,11 +16,11 @@ const NavBar = () => {
     setBgControl(event.target.checked)
   }
   return (
-    <Box sx={{flexGrow:1}}>
+    <Box sx={{flexGrow:1,width:'100%'}}>
       <AppBar position="sticky">
         <Toolbar sx={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
           <Box sx={{display:'flex',flexGrow:1}}>
-              <IconButton size="large" edge="start" color="inherit" aria-label='buffer' sx={{mr:2}}>
+              <IconButton size="large" edge="start" color="inherit" aria-label='buffer' sx={{mr:1}}>
                 <FaBuffer/>
               </IconButton>
               <Typography variant="h2" component="div"> Country Finder</Typography>

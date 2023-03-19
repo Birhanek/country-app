@@ -1,22 +1,39 @@
-import React, { useEffect } from 'react'
+
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../app/countryDataMaintainer/hooks'
 import { getAllCountries } from '../app/dataService/countryAPI'
 import CountryTabular from '../components/country/CountryTabular'
 import Loading from '../components/sideFeatures/Loading'
+import Pagination from '../components/sideFeatures/Pagination'
 
 
 const Countries = () => {
   const dispatch = useAppDispatch()
   const {countryState,isLoading,isError,message } = useAppSelector(state=>state.country)
 
-  
+  const [currentPage,setCurrentPage] = useState(1);
+  const [dataPerPage] = useState(10)
+
+  const indexOfLastData = currentPage * dataPerPage
+  const indexOfFirstData = indexOfLastData - dataPerPage
+  const countries = countryState.slice(indexOfFirstData,indexOfLastData)
+
+  const paginate = (selected:number) =>{
+    setCurrentPage(selected + 1)
+  }
+  const prevPage = ()=> {
+    if(currentPage !== 1) setCurrentPage(currentPage - 1)
+  }
+  const nextPage = ()=> {
+    if(currentPage !== Math.ceil(countryState.length/dataPerPage)) setCurrentPage(currentPage +1)
+  }
   // Dispatching all country at first glance
   useEffect(()=>{
     dispatch(getAllCountries())
   },[dispatch])
   
   // 
-  const countryData = countryState.map((country,index)=>{
+  const countryData = countries.map((country,index)=>{
     return <CountryTabular key = {index}  country = {country}/>
   })
 
@@ -36,15 +53,20 @@ const Countries = () => {
                     <th>Language</th>
                 </tr>  
           </thead>
-      <tbody>
+      <tbody className='table-details__body'>
           {
-            countryData
+            countryState && 
+                countryData
+             
           }
+        
       </tbody>
       
       </table>
 }
-     
+<Pagination dataPerPage={dataPerPage} totalData={countryState.length} 
+              paginate={paginate} prevPage={prevPage} nextPage={nextPage}
+              />
     </div>
   )
 }

@@ -32,7 +32,7 @@ const CountryTabular = (props:CountryProps) => {
   }
 
   return (
-    <tr key={props.key} className=''>
+    <tr key={props.key}>
       <td>{props.country.flag}</td>
       <td>{props.country.name.common}</td>
       <td>{props.country.region}</td>
