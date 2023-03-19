@@ -59,7 +59,7 @@ const handleExpand = ()=>{
             image={country.flags["png"]} 
             alt={country.flags["alt"]}/>
           <CardContent>
-            <Typography variant="body2" color="HighlightText">
+            <Typography variant="body2" color="HighlightText" className='description'>
               The country belongs to 
               <strong style={{color:'blue'}}> {country.region} </strong> region and 
               <strong style={{color:'blue'}}> {country.subregion} </strong> sub-region.Located at 

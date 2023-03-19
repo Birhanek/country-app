@@ -8,6 +8,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  font-family: 'Nunito', sans-serif;
 }
 
 html {
@@ -88,4 +89,8 @@ body{
   background-color: grey;
   border-radius: 50%;
   text-align: center;
+}
+/* for description of a single country*/
+.description{
+  font-size: 3rem;
 }
