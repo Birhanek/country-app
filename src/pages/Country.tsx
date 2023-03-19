@@ -61,12 +61,12 @@ const handleExpand = ()=>{
           <CardContent>
             <Typography variant="body2" color="HighlightText">
               The country belongs to 
-              <strong style={{color:'blue'}}>{country.region}</strong> region and 
-              <strong style={{color:'blue'}}>{country.subregion}</strong> sub-region.Located at 
-              <strong style={{color:'blue'}}>{country.latlng[0]}<sup>o</sup>N</strong> and 
-              <strong style={{color:'blue'}}>{country.latlng[1]}<sup>o</sup>W</strong>.
+              <strong style={{color:'blue'}}> {country.region} </strong> region and 
+              <strong style={{color:'blue'}}> {country.subregion} </strong> sub-region.Located at 
+              <strong style={{color:'blue'}}> {country.latlng[0]} <sup>o</sup>N</strong> and 
+              <strong style={{color:'blue'}}> {country.latlng[1]} <sup>o</sup>W</strong>.
               The country has a population of
-              <strong style={{color:'blue'}}>{country.population}</strong>.
+              <strong style={{color:'blue'}}> {country.population} </strong>.
             </Typography>
           </CardContent>
           <CardActions disableSpacing>

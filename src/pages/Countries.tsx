@@ -45,19 +45,17 @@ const Countries = () => {
       <Loading/>:isError?<p style={{background:"green",fontSize:"2rem"}}>{message}</p>:
       <table className='table-details'>
           <thead className='table-details__head'>
-                <tr>
+                <tr className='table-details-head__row'>
                     <th>Flag</th>
                     <th>Name</th>
                     <th>Region</th>
                     <th>Population</th>
-                    <th>Language</th>
+                    <th>Languages</th>
                 </tr>  
           </thead>
       <tbody className='table-details__body'>
           {
-            countryState && 
-                countryData
-             
+            countryState && countryData  
           }
         
       </tbody>

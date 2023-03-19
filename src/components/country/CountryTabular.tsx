@@ -32,15 +32,15 @@ const CountryTabular = (props:CountryProps) => {
   }
 
   return (
-    <tr key={props.key}>
-      <td>{props.country.flag}</td>
+    <tr key={props.key} className="table-details__data-row">
+      <td className='country__flag'>{props.country.flag}</td>
       <td>{props.country.name.common}</td>
       <td>{props.country.region}</td>
-      <td>{props.country.population}</td>
+      <td>{props.country.population.toLocaleString('en-us')}</td>
       <td>
-        <ul>
+        <ul className='language__list'>
         {
-          Languages(props.country.languages).map((language)=><li style={{color:"black",listStyleType:"desc"}}>{language}</li>)
+          Languages(props.country.languages).map((language)=><li className='language'>{language}</li>)
         }
         </ul>
       </td>

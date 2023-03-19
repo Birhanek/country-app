@@ -1,5 +1,5 @@
-import { Paper } from '@mui/material';
 import React from 'react';
+import { Paper } from '@mui/material';
 
 // project specific imports
 import './App.css';

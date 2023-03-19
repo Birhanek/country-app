@@ -1,5 +1,5 @@
-import { IconButton } from '@mui/material'
 import React from 'react'
+import { IconButton } from '@mui/material'
 import { PaginationStates } from '../../app/countryDataMaintainer/countryInterface'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -7,7 +7,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const Pagination = ({dataPerPage,totalData,paginate,prevPage,nextPage}:PaginationStates) => {
     const pages  = []
     
-    for(let page = 0;page < Math.ceil(totalData/dataPerPage);page++){
+    for(let page = 1;page <=Math.ceil(totalData/dataPerPage);page++){
         pages.push(page)
     }
   return (

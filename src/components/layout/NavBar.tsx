@@ -10,7 +10,6 @@ import { AppBar, Badge, FormControlLabel, FormGroup, IconButton, Switch, Toolbar
 
 const NavBar = () => {
   const {favoriteCount,favoriteCountry} = useAppSelector(state=>state.country)
-  console.log(favoriteCountry)
   const [bgControl,setBgControl] = useState<boolean>(true)
   const handleChange =(event:React.ChangeEvent<HTMLInputElement>)=>{
     setBgControl(event.target.checked)
