@@ -19,24 +19,28 @@ export const countrySlice = createSlice({
     initialState,
     reducers:{
         searchByName:(state,action:PayloadAction<string>)=>{
+            
             state.countryState = state.countryState.filter((country:CountryInfo)=>{
                 return (country.name.common.toLowerCase().includes(action.payload.toLowerCase())
                 || country.name.official.toLowerCase().includes(action.payload.toLowerCase()))
             })
         },
-        searchByRegion:(state,action:PayloadAction<string>)=>{
+        /*searchByRegion:(state,action:PayloadAction<string>)=>{
             state.countryState = state.countryState.filter((country:CountryInfo)=>{
                 return country.region.toLowerCase() === action.payload.toLowerCase()
             })
-        },
+        }*/
         IncrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
             state.favoriteCountry.push(action.payload.country)
+            state.favoriteCountry.map(country=>country.isFavorite = true)
             state.favoriteCount += action.payload.count
         },
         DecrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
             //const index:number = state.favoriteCountry.map((favorite)=>favorite.name.official).indexOf(action.payload.country.name.official)
             // Due to slow performance in large arrays 
             const index:number = state.favoriteCountry.findIndex(favorite=>favorite.name.official === action.payload.country.name.official)
+            const removeFavorite = state.favoriteCountry.find((favorite)=>favorite.name.official === action.payload.country.name.official)
+            if(removeFavorite) removeFavorite.isFavorite = false
             state.favoriteCountry.splice(index,1)
             state.favoriteCount -= action.payload.count
            // state.favoriteCountry.filter((favorite)=>)
@@ -53,6 +57,7 @@ export const countrySlice = createSlice({
         })
         builder.addCase(getAllCountries.fulfilled,(state,action:PayloadAction<CountryInfo[]>) => {
             state.countryState = action.payload
+            state.countryState.map((country)=>country.isFavorite=false) // added to initially the favorite is false
             state.isLoading = false
             state.isError = false
             state.message = 'Data fetched successfully'
@@ -105,6 +110,6 @@ export const countrySlice = createSlice({
 
 })
 
-export const {searchByName, searchByRegion,DecrementFavorite,IncrementFavorite} = countrySlice.actions
+export const {searchByName,DecrementFavorite,IncrementFavorite} = countrySlice.actions
 
 export default countrySlice.reducer

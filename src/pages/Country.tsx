@@ -66,7 +66,7 @@ const handleExpand = ()=>{
               <strong style={{color:'blue'}}> {country.latlng[0]} <sup>o</sup>N</strong> and 
               <strong style={{color:'blue'}}> {country.latlng[1]} <sup>o</sup>W</strong>.
               The country has a population of
-              <strong style={{color:'blue'}}> {country.population} </strong>.
+              <strong style={{color:'blue'}}> {country.population.toLocaleString('es-us')} </strong>.
             </Typography>
           </CardContent>
           <CardActions disableSpacing>

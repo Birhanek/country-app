@@ -53,7 +53,8 @@ export enum Continents {
     Europe = "Europe",
     NorthAmerica = "North America",
     Oceania = "Oceania",
-    SouthAmerica = "South America"  
+    SouthAmerica = "South America",
+    All ="All",
 }
 export interface FavoriteCountry{
     count:number,
@@ -106,7 +107,8 @@ interface CountryInfo {
    coatOfArms:{[key:string]:string},
    startOfWeek:string,
    capitalInfo?:{[key:string]:number[]},
-   postalCode:PostalCode
+   postalCode:PostalCode,
+   isFavorite:boolean
 }
 
 export default CountryInfo

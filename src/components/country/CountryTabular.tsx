@@ -12,7 +12,7 @@ const CountryTabular = (props:CountryProps) => {
   
 
   const dispatch = useAppDispatch()
-  const [color,setColor] = useState<string>('blue')
+  //const [color,setColor] = useState<string>('blue')
 
   const favoriteCountryAdd =(country:CountryInfo)=>{
     
@@ -20,12 +20,20 @@ const CountryTabular = (props:CountryProps) => {
       count:1,
       country:country
     }
-    if(color === 'blue'){
+    /*if(color === 'blue'){
       setColor('black')
       dispatch(IncrementFavorite(favorite))
     }
     if(color === 'black'){
       setColor('blue')
+      dispatch(DecrementFavorite(favorite))
+    }*/
+    if(country.isFavorite === false){
+     
+      dispatch(IncrementFavorite(favorite))
+    }
+    else{
+      
       dispatch(DecrementFavorite(favorite))
     }
     
@@ -44,7 +52,7 @@ const CountryTabular = (props:CountryProps) => {
         }
         </ul>
       </td>
-      <td><button onClick={()=>favoriteCountryAdd(props.country)}><FaHeart className={`btn-${color}`}/></button></td>
+      <td><button onClick={()=>favoriteCountryAdd(props.country)}><FaHeart className={`btn-${props.country.isFavorite?'black':'blue'}`}/></button></td>
       <td>
         <Link 
         to={`/countries/${props.country.name.official}?fullText=true`}>
