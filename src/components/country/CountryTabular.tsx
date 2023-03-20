@@ -12,7 +12,7 @@ const CountryTabular = (props:CountryProps) => {
   
 
   const dispatch = useAppDispatch()
-  //const [color,setColor] = useState<string>('blue')
+  const [color,setColor] = useState<string>('blue')
 
   const favoriteCountryAdd =(country:CountryInfo)=>{
     
@@ -20,14 +20,15 @@ const CountryTabular = (props:CountryProps) => {
       count:1,
       country:country
     }
-    /*if(color === 'blue'){
+    if(color === 'blue'){
       setColor('black')
       dispatch(IncrementFavorite(favorite))
     }
     if(color === 'black'){
       setColor('blue')
       dispatch(DecrementFavorite(favorite))
-    }*/
+    }
+    /*
     if(country.isFavorite === false){
      
       dispatch(IncrementFavorite(favorite))
@@ -35,7 +36,7 @@ const CountryTabular = (props:CountryProps) => {
     else{
       
       dispatch(DecrementFavorite(favorite))
-    }
+    }*/
     
   }
 
