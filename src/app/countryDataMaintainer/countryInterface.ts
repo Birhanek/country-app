@@ -1,4 +1,5 @@
 import { IconButtonProps } from "@mui/material"
+import React, { Dispatch } from "react"
 
 export interface Language {
     official:string,
@@ -109,6 +110,7 @@ interface CountryInfo {
    capitalInfo?:{[key:string]:number[]},
    postalCode:PostalCode,
    isFavorite:boolean
+   setIsFavorite:React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default CountryInfo
