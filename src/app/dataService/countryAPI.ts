@@ -29,8 +29,17 @@ export const getCountryByName = createAsyncThunk(
 // getting countries by region
 export const getCountriesByRegion = createAsyncThunk(
     'countries/getCountriesByRegion',async(region:string,thunkApi) =>{
-        const response = await axios.get(`${BASE_URL}/v3.1/region/${region}`)
-        const data:CountryInfo[] = await response.data
-        return data
+        if(region ==='All'){
+            const response = await axios.get(`${BASE_URL}/v3.1/all`)
+
+            const data:CountryInfo[] = await response.data
+            return data
+        }
+        else{
+            const response = await axios.get(`${BASE_URL}/v3.1/region/${region}`)
+            const data:CountryInfo[] = await response.data
+            return data
+        }
+        
     }
 )

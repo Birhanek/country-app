@@ -5,7 +5,7 @@ import Countries from './Countries'
 
 const Home = () => {
   return (
-      <Container component="div" maxWidth="lg" sx={{display:'flex',flexDirection:'column',gap:3}}>
+    <Container component="div" maxWidth="lg" sx={{display:'flex',flexDirection:'column',gap:3}}>
         <Header/>
         <Countries/>
     </Container>

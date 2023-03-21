@@ -34,7 +34,6 @@ body{
   padding: 1rem;
 }
 .table-details-head__row{
-  background-color: rgb(255, 255, 255);
   height: 4rem;
 }
 .table-details-head__row th{
@@ -49,9 +48,10 @@ body{
   height: 4rem;
   box-shadow: 0px 0px 0px 0px rgba(17, 17, 26, 0.18);
   padding-top: 1rem;
-  border: 1px solid rgba(234,234,234,0.9);
+  border-bottom: 1px solid rgba(234,234,234,0.9);
   border-radius: 0.2rem;
 }
+
 .table-details__data-row td{
   font-size: 1.6rem;
   text-align: center;
@@ -97,7 +97,23 @@ body{
   border-radius: 50%;
   text-align: center;
 }
-/* for description of a single country*/
-.description{
-  font-size: 3rem;
+
+/* responsiveness of the page */
+
+@media screen and (max-width:600px){
+  .paginate-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+  .paginate{
+    display: grid;
+    grid-template-columns: repeat(13,minmax(0,1fr));
+  }
+  .page{
+    height: 3rem;
+    width: 3rem;
+
+  }
 }

@@ -34,7 +34,7 @@ export interface PostalCode {
 
 export interface CountryProps {
     country:CountryInfo,
-    key:number
+    index:number
 }
 
 export interface  CountryState {

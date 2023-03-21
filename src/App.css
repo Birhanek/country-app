@@ -40,20 +40,18 @@
 /* end of navigation component*/
 
 /* Header component */
-.header{
-  margin: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-}
-.search-icon{
-  color: black;
-  background-color: red;
-}
 .btn-black{
   color: black;
+  cursor: pointer;
 }
 .btn-blue{
   color: blue;
+  cursor: pointer;
+}
+.btn-blue:hover{
+  background-color: green;
+}
+.btn-black:hover{
+  background-color: red;
 }

@@ -7,7 +7,7 @@ const Favorite = () => {
   const {favoriteCountry} = useAppSelector(state=>state.country)
 
   const favoriteCountryData = favoriteCountry.map((favorite,index)=>{
-    return <CountryTabular key={index} country={favorite}/>
+    return <CountryTabular key={index} index={index} country={favorite}/>
   })
   return (
     <div className='country-details'>

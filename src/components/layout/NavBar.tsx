@@ -1,21 +1,24 @@
 
-import React, { useState } from 'react'
-import {FaBuffer, FaHome} from "react-icons/fa";
-import { GiWireframeGlobe } from "react-icons/gi";
+import React, { useContext } from 'react'
+import {FaBuffer} from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../app/countryDataMaintainer/hooks';
 import Box from '@mui/material/Box';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { AppBar, Badge, FormControlLabel, FormGroup, IconButton, Switch, Toolbar, Typography } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+import { AppBar, Badge, IconButton, Toolbar, Typography, useTheme } from '@mui/material';
+import { Brightness4, Brightness7 } from '@mui/icons-material';
+//User defined call ups
+import { useAppSelector } from '../../app/countryDataMaintainer/hooks';
+import { SwitcherThemeContext } from '../../App';
+
 
 const NavBar = () => {
+  const theme = useTheme()
+  const colorSwitcher = useContext(SwitcherThemeContext)
   const {favoriteCount,favoriteCountry} = useAppSelector(state=>state.country)
-  const [bgControl,setBgControl] = useState<boolean>(true)
-  const handleChange =(event:React.ChangeEvent<HTMLInputElement>)=>{
-    setBgControl(event.target.checked)
-  }
   return (
-    <Box sx={{flexGrow:1,width:'100%'}}>
+    <Box sx={{flexGrow:1,width:'100%',position:"sticky",top:0,left:0,zIndex:5}}>
       <AppBar position="sticky">
         <Toolbar sx={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
           <Box sx={{display:'flex',flexGrow:1}}>
@@ -25,15 +28,18 @@ const NavBar = () => {
               <Typography variant="h2" component="div"> Country Finder</Typography>
           </Box>
           <Box sx={{display:'flex',gap:1,justifyContent:'space-between',alignItems:'center'}}>
-              <Link to='/'><FaHome/></Link>
-              <Link to='/countries'><GiWireframeGlobe/></Link>
-              <Link to='/favorite' state={favoriteCountry}>
-                <Badge badgeContent={favoriteCount} max={5} color="error">
-                      <FavoriteIcon/>
-                </Badge></Link> 
-              <FormGroup>
-                <FormControlLabel label control={<Switch color="secondary" checked={bgControl} onChange={handleChange}/>}/>
-              </FormGroup>
+              <IconButton><Link to='/'><HomeIcon/></Link></IconButton>
+              <IconButton><Link to='/countries'><TravelExploreIcon/></Link></IconButton>
+              <IconButton>
+                <Link to='/favorite' state={favoriteCountry}>
+                  <Badge badgeContent={favoriteCount} max={5} color="error">
+                        <FavoriteIcon/>
+                  </Badge>
+                </Link>
+              </IconButton>
+              <IconButton onClick={colorSwitcher.toggleColorMode}>
+                {theme.palette.mode ==='light'?<Brightness7/>:<Brightness4/>}
+              </IconButton> 
           </Box>
         </Toolbar>
       </AppBar>

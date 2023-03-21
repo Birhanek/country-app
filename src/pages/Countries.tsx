@@ -35,7 +35,7 @@ const Countries = () => {
   
   // 
   const countryData = countries.map((country,index)=>{
-    return <CountryTabular key = {index}  country = {country}/>
+    return <CountryTabular key={index} index = {index}  country = {country}/>
   })
 
 
