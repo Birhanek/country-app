@@ -5,6 +5,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Pagination = ({dataPerPage,totalData,paginate,prevPage,nextPage}:PaginationStates) => {
+
     const pages  = []
     
     for(let page = 1;page <=Math.ceil(totalData/dataPerPage);page++){
@@ -19,6 +20,7 @@ const Pagination = ({dataPerPage,totalData,paginate,prevPage,nextPage}:Paginatio
             }
             <li onClick={nextPage} className="page"><IconButton><ArrowForwardIosIcon/></IconButton></li>
       </ul>
+      
     </div>
   )
 }

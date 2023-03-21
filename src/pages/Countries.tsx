@@ -11,8 +11,9 @@ const Countries = () => {
   const dispatch = useAppDispatch()
   const {countryState,isLoading,isError,message } = useAppSelector(state=>state.country)
 
-  const [currentPage,setCurrentPage] = useState(1);
-  const [dataPerPage] = useState(10)
+  const [currentPage,setCurrentPage] = useState<number>(1);
+  const [dataPerPage] = useState<number>(10)
+
 
   const indexOfLastData = currentPage * dataPerPage
   const indexOfFirstData = indexOfLastData - dataPerPage

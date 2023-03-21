@@ -1,5 +1,4 @@
 import { IconButtonProps } from "@mui/material"
-import React, { Dispatch } from "react"
 
 export interface Language {
     official:string,
@@ -44,7 +43,7 @@ export interface  CountryState {
     isError:boolean,
     message?:string,
     favoriteCountry:CountryInfo[],
-    favoriteCount:number
+    favoriteCount:number,
 }
 
 export enum Continents {

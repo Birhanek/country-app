@@ -56,8 +56,15 @@ body{
   font-size: 1.6rem;
   text-align: center;
 }
-.table-details__body .table-details__data-row .country__flag{
-  font-size: 4rem;
+#flag{
+  text-align: start;
+  width: 20%;
+}
+#country__flag{
+  object-fit:cover;
+  height: 50%;
+  width: 100%;
+  padding: 0.2rem;
 }
 .language__list{
   display: flex;

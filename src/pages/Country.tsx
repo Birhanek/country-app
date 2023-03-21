@@ -1,14 +1,12 @@
 import { MoreVert } from '@mui/icons-material';
 import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, Container, IconButton, MenuItem, Stack, Typography } from '@mui/material';
-import { blue } from '@mui/material/colors';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Languages } from '../app/countryDataMaintainer/CountryFunctions';
 import { useAppDispatch, useAppSelector } from '../app/countryDataMaintainer/hooks';
 import { getCountryByName } from '../app/dataService/countryAPI';
-import NavBar from '../components/layout/NavBar';
 import Loading from '../components/sideFeatures/Loading';
 import { ExpandMoreProps } from '../app/countryDataMaintainer/countryInterface';
 import { styled} from '@mui/material/styles';
@@ -32,9 +30,14 @@ const {countryState, isLoading,isError,message} = useAppSelector((state)=>state.
 const {name} = useParams()
 
 const [expand,setExpand] = useState<boolean>(false)
+const [locationExpand, setLocationExpand] = useState<boolean>(false)
 
 const handleExpand = ()=>{
   setExpand(!expand)
+}
+
+const handleLocationExpanded = () => {
+  setLocationExpand(!locationExpand)
 }
 
   useEffect(()=>{
@@ -42,24 +45,24 @@ const handleExpand = ()=>{
 },[dispatch,name])
 
   return (
-    <Container>
-    <NavBar/>
-    
+    <Container sx={{width:'40%',padding:'2rem'}}>
     {
      isLoading?<Loading/>:isError?<Typography variant="h2">{message}</Typography>:countryState.map((country)=><Box sx={{width:'400',height:"auto"}}>
-        <Card className='card'>
+        <Card>
           <CardHeader 
-          avatar={<Avatar sx={{bgcolor:blue}}>{country.cca2}</Avatar>}
+          avatar={<Avatar sx={{backgroundColor:"blue"}}>{country.cca2}</Avatar>}
           action={<IconButton><MoreVert/></IconButton>}
           title={country.name.common}
-          subheader={country.continents[0]}/>
+          subheader={country.continents[0]}
+          sx={{backgroundColor:"text.secondary", fontSize:20}}/>
           <CardMedia
             component='img' 
             width='400' 
             image={country.flags["png"]} 
-            alt={country.flags["alt"]}/>
+            alt={country.flags["alt"]}
+            />
           <CardContent>
-            <Typography variant="body2" color="HighlightText" className='description'>
+            <Typography variant="body2" color="HighlightText" sx={{fontSize:14,color:"text.secondary"}}>
               The country belongs to 
               <strong style={{color:'blue'}}> {country.region} </strong> region and 
               <strong style={{color:'blue'}}> {country.subregion} </strong> sub-region.Located at 
@@ -71,11 +74,17 @@ const handleExpand = ()=>{
           </CardContent>
           <CardActions disableSpacing>
                <IconButton aria-label='back to main page'>
-                <ArrowBackIosIcon/>
+                <Link to='/'><ArrowBackIosIcon/></Link>
                </IconButton> 
+               <ExpandMoreButton
+               expand={locationExpand}
+               onClick={handleLocationExpanded}
+               aril-label=" show location"
+               >
                <IconButton aria-label='location'>
                 <LocationOnIcon/>
                </IconButton>
+               </ExpandMoreButton>
                <ExpandMoreButton
                 expand={expand}
                 onClick = {handleExpand}
@@ -84,6 +93,7 @@ const handleExpand = ()=>{
                >
                 <ExpandMoreIcon/>
                </ExpandMoreButton>
+
           </CardActions>
           <Collapse in={expand} timeout="auto" unmountOnExit>
                <CardContent>
@@ -96,6 +106,13 @@ const handleExpand = ()=>{
             </Typography>
                </CardContent>
           
+          </Collapse>
+          <Collapse in={locationExpand} timeout="auto" unmountOnExit>
+               <CardContent>
+                  <Typography>
+                    <iframe src={country.maps["openStreetMaps"]} title={country.name.official}></iframe>
+                  </Typography>
+               </CardContent>
           </Collapse>
         </Card>
       </Box>)

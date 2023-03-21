@@ -2,6 +2,8 @@
 import React, { useState } from 'react'
 import { FaAngleRight, FaHeart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Languages } from '../../app/countryDataMaintainer/CountryFunctions'
 import CountryInfo, { CountryProps, FavoriteCountry } from '../../app/countryDataMaintainer/countryInterface'
 import { useAppDispatch } from '../../app/countryDataMaintainer/hooks'
@@ -13,6 +15,7 @@ const CountryTabular = (props:CountryProps) => {
 
   const dispatch = useAppDispatch()
   const [color,setColor] = useState<string>('blue')
+ 
 
   const favoriteCountryAdd =(country:CountryInfo)=>{
     
@@ -20,28 +23,21 @@ const CountryTabular = (props:CountryProps) => {
       count:1,
       country:country
     }
-    /*if(color === 'blue'){
+    if(color === 'blue'){
       setColor('black')
       dispatch(IncrementFavorite(favorite))
+      toast.success(`${country.name.common} is added to favorite`)
     }
     if(color === 'black'){
       setColor('blue')
       dispatch(DecrementFavorite(favorite))
-    }
-    /*if(country.isFavorite === false){
-     
-      dispatch(IncrementFavorite(favorite))
-    }
-    else{
-      
-      dispatch(DecrementFavorite(favorite))
-    }*/
-    
+      toast.error(`${country.name.common} is removed from favorite`)
+    } 
   }
 
   return (
     <tr key={props.key} className="table-details__data-row">
-      <td className='country__flag'>{props.country.flag}</td>
+      <td id='flag'><img id='country__flag' src={props.country.flags["png"]} alt={props.country.flags["alt"]}/></td>
       <td>{props.country.name.common}</td>
       <td>{props.country.region}</td>
       <td>{props.country.population.toLocaleString('en-us')}</td>
@@ -59,6 +55,7 @@ const CountryTabular = (props:CountryProps) => {
           <FaAngleRight/>     
         </Link>
       </td>
+      <ToastContainer autoClose={500} hideProgressBar={true} theme="colored" />
     </tr>
   )
 }

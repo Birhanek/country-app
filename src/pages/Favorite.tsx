@@ -1,7 +1,6 @@
 import React from 'react'
 import { useAppSelector } from '../app/countryDataMaintainer/hooks'
 import CountryTabular from '../components/country/CountryTabular'
-import NavBar from '../components/layout/NavBar'
 
 
 const Favorite = () => {
@@ -12,7 +11,6 @@ const Favorite = () => {
   })
   return (
     <div className='country-details'>
-      <NavBar/>
      {
       favoriteCountry.length>0?<div className='country-details'>
       <table className='table-details'>
