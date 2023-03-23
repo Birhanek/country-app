@@ -44,6 +44,7 @@ export interface  CountryState {
     message?:string,
     favoriteCountry:CountryInfo[],
     favoriteCount:number,
+    searchQuery:string,
 }
 
 export enum Continents {

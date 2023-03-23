@@ -2,8 +2,9 @@
 import { Favorite } from '@mui/icons-material';
 import React, { useState } from 'react'
 import { FaAngleRight } from 'react-icons/fa'
+import { v4 as uuidv4, v4 } from 'uuid';
 import { Link } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // User defined call ups
@@ -39,7 +40,7 @@ const CountryTabular = (props:CountryProps) => {
   }
 
   return (
-    <tr key={props.index} className="table-details__data-row">
+    <tr key={uuidv4()} className="table-details__data-row">
       <td id='flag'><img id='country__flag' src={props.country.flags["png"]} alt={props.country.flags["alt"]}/></td>
       <td>{props.country.name.common}</td>
       <td>{props.country.region}</td>
@@ -47,7 +48,7 @@ const CountryTabular = (props:CountryProps) => {
       <td>
         <ul className='language__list'>
         {
-          Languages(props.country.languages).map((language)=><li className='language'>{language}</li>)
+          Languages(props.country.languages).map((language)=><li key={uuidv4()} className='language'>{language}</li>)
         }
         </ul>
       </td>
@@ -58,7 +59,7 @@ const CountryTabular = (props:CountryProps) => {
           <FaAngleRight/>     
         </Link>
       </td>
-      <ToastContainer autoClose={500} hideProgressBar={true} theme="colored" />
+      
     </tr>
   )
 }

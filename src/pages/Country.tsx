@@ -11,6 +11,7 @@ import Loading from '../components/sideFeatures/Loading';
 import { ExpandMoreProps } from '../app/countryDataMaintainer/countryInterface';
 import { styled} from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { v4 as uuidv4, v4 } from 'uuid';
 
 export const ExpandMoreButton = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
@@ -47,7 +48,7 @@ const handleLocationExpanded = () => {
   return (
     <Container sx={{width:'40%',padding:'2rem'}}>
     {
-     isLoading?<Loading/>:isError?<Typography variant="h2">{message}</Typography>:countryState.map((country)=><Box sx={{width:'400',height:"auto"}}>
+     isLoading?<Loading/>:isError?<Typography variant="h2">{message}</Typography>:countryState.map((country)=><Box key={uuidv4()} sx={{width:'400',height:"auto"}}>
         <Card>
           <CardHeader 
           avatar={<Avatar sx={{backgroundColor:"blue"}}>{country.cca2}</Avatar>}
@@ -100,7 +101,7 @@ const handleLocationExpanded = () => {
                <Typography variant="body2">
                Languages: <Stack direction="row" spacing={1}>{
               Languages(country.languages).map((language)=>
-                  <MenuItem>{language}</MenuItem>
+                  <MenuItem key={uuidv4()}>{language}</MenuItem>
               )
                }</Stack>
             </Typography>

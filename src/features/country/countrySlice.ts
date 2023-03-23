@@ -10,7 +10,8 @@ const initialState:CountryState = {
     isError:false,
     message:'',
     favoriteCount:0,
-    favoriteCountry:[]
+    favoriteCountry:[],
+    searchQuery:''
 }
 
 
@@ -19,17 +20,8 @@ export const countrySlice = createSlice({
     initialState,
     reducers:{
         searchByName:(state,action:PayloadAction<string>)=>{
-            
-            state.countryState = state.countryState.filter((country:CountryInfo)=>{
-                return (country.name.common.toLowerCase().includes(action.payload.toLowerCase())
-                || country.name.official.toLowerCase().includes(action.payload.toLowerCase()))
-            })
+        state.searchQuery = action.payload.toLocaleLowerCase()
         },
-        /*searchByRegion:(state,action:PayloadAction<string>)=>{
-            state.countryState = state.countryState.filter((country:CountryInfo)=>{
-                return country.region.toLowerCase() === action.payload.toLowerCase()
-            })
-        }*/
         IncrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
             state.favoriteCountry.push(action.payload.country)
             state.favoriteCount += action.payload.count

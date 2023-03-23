@@ -1,8 +1,8 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Continents } from '../../app/countryDataMaintainer/countryInterface'
 import { useAppDispatch } from '../../app/countryDataMaintainer/hooks'
-import { getAllCountries, getCountriesByRegion } from '../../app/dataService/countryAPI'
+import { getCountriesByRegion } from '../../app/dataService/countryAPI'
 import { searchByName } from '../../features/country/countrySlice'
 import SearchIcon from '@mui/icons-material/Search';
 import { Search,SearchIconWrapper,StyledInputBase } from '../sideFeatures/StyledComponents'
@@ -15,20 +15,13 @@ const Header = () => {
 
   const searchCountryByName = (event:React.ChangeEvent<HTMLInputElement>)=>{
     setName(event.target.value)
+    dispatch(searchByName(event.target.value))
   }
   const searchCountriesByRegion =(event:SelectChangeEvent)=>{
     setRegion(event.target.value)
+    dispatch(getCountriesByRegion(event.target.value))
   }
-  useEffect(()=>{
-    if(name ===''){
-      dispatch(getAllCountries())
-    }
-    else{
-      dispatch(searchByName(name))
-    }
-   
-    dispatch(getCountriesByRegion(region))
-  },[dispatch,name,region])
+
   return (
         <Grid container spacing={2} sx={{mt:1,p:1}}>
               <Grid container item xs={12} xl={8} md={6} >

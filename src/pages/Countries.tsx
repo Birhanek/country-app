@@ -9,8 +9,7 @@ import Pagination from '../components/sideFeatures/Pagination'
 
 const Countries = () => {
   const dispatch = useAppDispatch()
-  const {countryState,isLoading,isError,message } = useAppSelector(state=>state.country)
-
+  const {countryState,isLoading,isError,message, searchQuery } = useAppSelector(state=>state.country)
   const [currentPage,setCurrentPage] = useState<number>(1);
   const [dataPerPage] = useState<number>(10)
 
@@ -28,15 +27,18 @@ const Countries = () => {
   const nextPage = ()=> {
     if(currentPage !== Math.ceil(countryState.length/dataPerPage)) setCurrentPage(currentPage +1)
   }
-  // Dispatching all country at first glance
+ 
+  
   useEffect(()=>{
     dispatch(getAllCountries())
   },[dispatch])
-  
-  // 
-  const countryData = countries.map((country,index)=>{
-    return <CountryTabular key={index} index = {index}  country = {country}/>
-  })
+
+  const dataTable = countries.filter((country)=>{
+    if(searchQuery === '') return country
+    else{
+      return country.name.common.toLocaleLowerCase().includes(searchQuery)
+    }
+  }).map((country,index)=><CountryTabular key={index} index = {index}  country = {country}/>)
 
 
   return (
@@ -56,11 +58,10 @@ const Countries = () => {
           </thead>
       <tbody className='table-details__body'>
           {
-            countryState && countryData  
+            countryState && dataTable  
           }
         
-      </tbody>
-      
+      </tbody>  
       </table>
 }
 <Pagination dataPerPage={dataPerPage} totalData={countryState.length} 
