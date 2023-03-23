@@ -22,6 +22,28 @@ export const countrySlice = createSlice({
         searchByName:(state,action:PayloadAction<string>)=>{
         state.searchQuery = action.payload.toLocaleLowerCase()
         },
+        sortByPopulation:(state,action:PayloadAction<boolean>) =>{
+            if(action.payload === true){
+                state.countryState.sort((prevCountry,nextCountry)=>(prevCountry.population > nextCountry.population) ? 1 : (prevCountry.population < nextCountry.population) ? -1 : 0)
+            }
+            else{
+                state.countryState.sort((prevCountry,nextCountry)=>(prevCountry.population < nextCountry.population) ? 1 : (prevCountry.population > nextCountry.population) ? -1 : 0)
+            }
+        },
+        sortByCountryName: (state, action: PayloadAction<boolean>) => {
+            if(action.payload === true){
+                state.countryState.sort(
+                    (prevCountry,nextCountry)=>(prevCountry.name.common.toLowerCase() > nextCountry.name.common.toLowerCase()) ? 1:
+                                                (prevCountry.name.common.toLowerCase() < nextCountry.name.common.toLowerCase()) ? -1 : 0
+                    )
+            }
+            else {
+                state.countryState.sort(
+                    (prevCountry,nextCountry)=>(prevCountry.name.common.toLowerCase() < nextCountry.name.common.toLowerCase()) ? 1:
+                                                (prevCountry.name.common.toLowerCase() > nextCountry.name.common.toLowerCase()) ? -1 : 0
+                    )
+            }
+        },
         IncrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
             state.favoriteCountry.push(action.payload.country)
             state.favoriteCount += action.payload.count
@@ -94,6 +116,6 @@ export const countrySlice = createSlice({
 
 })
 
-export const {searchByName,DecrementFavorite,IncrementFavorite} = countrySlice.actions
+export const {searchByName,DecrementFavorite,IncrementFavorite,sortByPopulation,sortByCountryName} = countrySlice.actions
 
 export default countrySlice.reducer

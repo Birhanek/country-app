@@ -11,7 +11,7 @@ import Loading from '../components/sideFeatures/Loading';
 import { ExpandMoreProps } from '../app/countryDataMaintainer/countryInterface';
 import { styled} from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { v4 as uuidv4, v4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export const ExpandMoreButton = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;

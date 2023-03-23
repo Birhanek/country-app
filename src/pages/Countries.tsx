@@ -1,10 +1,17 @@
 
 import React, { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { useAppDispatch, useAppSelector } from '../app/countryDataMaintainer/hooks'
 import { getAllCountries } from '../app/dataService/countryAPI'
 import CountryTabular from '../components/country/CountryTabular'
 import Loading from '../components/sideFeatures/Loading'
 import Pagination from '../components/sideFeatures/Pagination'
+import { IconButton } from '@mui/material';
+import { sortByCountryName, sortByPopulation } from '../features/country/countrySlice';
 
 
 const Countries = () => {
@@ -12,11 +19,13 @@ const Countries = () => {
   const {countryState,isLoading,isError,message, searchQuery } = useAppSelector(state=>state.country)
   const [currentPage,setCurrentPage] = useState<number>(1);
   const [dataPerPage] = useState<number>(10)
-
+  const [isSortedByPopulation, setIsSortedByPopulation] = useState(false)
+  const [isSortedByCountryName, setIsSortedByCountryName] = useState(false)
 
   const indexOfLastData = currentPage * dataPerPage
   const indexOfFirstData = indexOfLastData - dataPerPage
   const countries = countryState.slice(indexOfFirstData,indexOfLastData)
+
 
   const paginate = (selected:number) =>{
     setCurrentPage(selected + 1)
@@ -28,7 +37,29 @@ const Countries = () => {
     if(currentPage !== Math.ceil(countryState.length/dataPerPage)) setCurrentPage(currentPage +1)
   }
  
-  
+  const sortingByPopulation = () =>{
+    if(isSortedByPopulation){
+      dispatch(sortByPopulation(isSortedByPopulation))
+      setIsSortedByPopulation(!isSortedByPopulation)
+    }
+    else{
+      dispatch(sortByPopulation(isSortedByPopulation))
+      setIsSortedByPopulation(!isSortedByPopulation)
+    }
+  }
+
+  const sortingByNameOfCountry = () =>{
+    if(isSortedByCountryName){
+      dispatch(sortByCountryName(isSortedByCountryName))
+      setIsSortedByCountryName(!isSortedByCountryName)
+    }
+    else {
+      dispatch(sortByCountryName(isSortedByCountryName))
+      setIsSortedByCountryName(!isSortedByCountryName)
+    }
+  }
+
+
   useEffect(()=>{
     dispatch(getAllCountries())
   },[dispatch])
@@ -50,9 +81,9 @@ const Countries = () => {
           <thead className='table-details__head'>
                 <tr className='table-details-head__row'>
                     <th>Flag</th>
-                    <th>Name</th>
+                    <IconButton onClick={sortingByNameOfCountry}><th>Name {isSortedByCountryName ? <ArrowDownwardIcon/> : <ArrowUpwardIcon/> }</th></IconButton>
                     <th>Region</th>
-                    <th>Population</th>
+                    <IconButton onClick={sortingByPopulation}><th>Population {isSortedByPopulation ? <ArrowDropUpIcon/>:<ArrowDropDownIcon/>}</th></IconButton>
                     <th>Languages</th>
                 </tr>  
           </thead>
@@ -67,6 +98,7 @@ const Countries = () => {
 <Pagination dataPerPage={dataPerPage} totalData={countryState.length} 
               paginate={paginate} prevPage={prevPage} nextPage={nextPage}
               />
+<ToastContainer autoClose={500} hideProgressBar={true} theme='colored'/>
     </div>
   )
 }

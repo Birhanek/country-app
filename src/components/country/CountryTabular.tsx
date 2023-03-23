@@ -2,7 +2,7 @@
 import { Favorite } from '@mui/icons-material';
 import React, { useState } from 'react'
 import { FaAngleRight } from 'react-icons/fa'
-import { v4 as uuidv4, v4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
