@@ -19,9 +19,11 @@ export const countrySlice = createSlice({
     name:'country',
     initialState,
     reducers:{
+        
         searchByName:(state,action:PayloadAction<string>)=>{
         state.searchQuery = action.payload.toLocaleLowerCase()
         },
+
         sortByPopulation:(state,action:PayloadAction<boolean>) =>{
             if(action.payload === true){
                 state.countryState.sort((prevCountry,nextCountry)=>(prevCountry.population > nextCountry.population) ? 1 : (prevCountry.population < nextCountry.population) ? -1 : 0)
@@ -30,6 +32,7 @@ export const countrySlice = createSlice({
                 state.countryState.sort((prevCountry,nextCountry)=>(prevCountry.population < nextCountry.population) ? 1 : (prevCountry.population > nextCountry.population) ? -1 : 0)
             }
         },
+
         sortByCountryName: (state, action: PayloadAction<boolean>) => {
             if(action.payload === true){
                 state.countryState.sort(
@@ -44,10 +47,12 @@ export const countrySlice = createSlice({
                     )
             }
         },
+
         IncrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
             state.favoriteCountry.push(action.payload.country)
             state.favoriteCount += action.payload.count
         },
+
         DecrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
             const index:number = state.favoriteCountry.findIndex(favorite=>favorite.name.official === action.payload.country.name.official)
             state.favoriteCountry.splice(index,1)

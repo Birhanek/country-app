@@ -1,13 +1,14 @@
 import React from 'react'
 import { useAppSelector } from '../app/countryDataMaintainer/hooks'
-import CountryTabular from '../components/country/CountryTabular'
+import CountryData from '../components/country/CountryData'
+
 
 
 const Favorite = () => {
   const {favoriteCountry} = useAppSelector(state=>state.country)
 
   const favoriteCountryData = favoriteCountry.map((favorite,index)=>{
-    return <CountryTabular key={index} index={index} country={favorite}/>
+    return <CountryData key={index} index={index} country={favorite}/>
   })
   return (
     <div className='country-details'>
