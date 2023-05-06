@@ -8,28 +8,22 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Languages } from '../../app/countryDataMaintainer/CountryFunctions'
 import CountryInfo, { CountryProps, FavoriteCountry } from '../../app/countryDataMaintainer/countryInterface'
 import { useAppDispatch } from '../../app/countryDataMaintainer/hooks';
+//import { DecrementFavorite, IncrementFavorite } from '../../features/country/countrySlice';
 import { FaAngleRight } from 'react-icons/fa';
-import { DecrementFavorite, IncrementFavorite } from '../../features/country/favoriteSlice';
+import { DecrementFavorite } from '../../features/country/favoriteSlice';
 
-const CountryData = (country:CountryProps) => {
+const FavoriteData = (country:CountryProps) => {
     const dispatch = useAppDispatch()
-    const [color,setColor] = useState<string>('blue')
+    const [color] = useState<string>('black')
    
   
-    const favoriteCountryAdd =(country:CountryInfo)=>{
+    const favoriteCountryDelete =(country:CountryInfo)=>{
       
       const favorite: FavoriteCountry ={
         count:1,
         country:country
       }
-      if(color === 'blue'){
-        setColor('black')
-        //dispatch(IncrementFavorite(favorite))
-        dispatch(IncrementFavorite(favorite))
-        toast.success(`${country.name.common} is added to favorite`)
-      }
       if(color === 'black'){
-        setColor('blue')
         //dispatch(DecrementFavorite(favorite))
         dispatch(DecrementFavorite(favorite))
         toast.error(`${country.name.common} is removed from favorite`)
@@ -49,10 +43,10 @@ const CountryData = (country:CountryProps) => {
                 }
             </ul>
         </TableCell>
-        <TableCell><Favorite onClick={()=>favoriteCountryAdd(country.country)} className={`btn-${color}`} /></TableCell>
+        <TableCell><Favorite onClick={()=>favoriteCountryDelete(country.country)} className={`btn-${color}`} /></TableCell>
         <TableCell><Link to={`/countries/${country.country.name.official}?fullText=true`}><FaAngleRight/></Link></TableCell>
     </TableRow>
   )
 }
 
-export default CountryData
+export default FavoriteData

@@ -1,7 +1,6 @@
 import { ArrowCircleDown, ArrowCircleUp } from '@mui/icons-material';
 import { IconButton, Paper, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import { ToastContainer } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../app/countryDataMaintainer/hooks';
 import { getAllCountries } from '../app/dataService/countryAPI';
 import CountryData from '../components/country/CountryData';
@@ -73,11 +72,11 @@ const CountriesTable = () => {
                 <TableContainer sx={{maxWidth:'100%'}}>
                 <TableHead >
                     <TableRow sx={{width:'100%'}}>
-                        <TableCell sx={{fontSize:10}} colSpan={2}>Flag</TableCell>
-                        <IconButton onClick={sortingByNameOfCountry}><TableCell sx={{fontSize:10}} colSpan={1}>Name {isSortedByCountryName ? <ArrowCircleDown/> : <ArrowCircleUp/>}</TableCell></IconButton>
-                        <TableCell sx={{fontSize:10}} >Region</TableCell>
+                        <TableCell sx={{fontSize:15}} colSpan={2}>Flag</TableCell>
+                        <IconButton onClick={sortingByNameOfCountry}><TableCell sx={{fontSize:20}} colSpan={1}>Name {isSortedByCountryName ? <ArrowCircleDown/> : <ArrowCircleUp/>}</TableCell></IconButton>
+                        <TableCell sx={{fontSize:15}} >Region</TableCell>
                         <IconButton onClick={sortingByPopulation}><TableCell sx={{fontSize:10}} >Population {isSortedByPopulation ? <ArrowCircleDown/> : <ArrowCircleUp/>}</TableCell></IconButton>
-                        <TableCell sx={{fontSize:10}}>Languages</TableCell>
+                        <TableCell sx={{fontSize:15}}>Languages</TableCell>
                         <TableCell sx={{fontSize:10}}></TableCell>
                         <TableCell sx={{fontSize:10}}></TableCell>
                     </TableRow>
@@ -98,7 +97,7 @@ const CountriesTable = () => {
             onPageChange ={handleChangePage}
             onRowsPerPageChange ={handlePagesPerRow}
             />
-            <ToastContainer autoClose={500} theme='colored' hideProgressBar={true}/>
+           
             
             
         </Paper>

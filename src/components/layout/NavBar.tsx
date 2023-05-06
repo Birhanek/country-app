@@ -16,7 +16,7 @@ import { SwitcherThemeContext } from '../../App';
 const NavBar = () => {
   const theme = useTheme()
   const colorSwitcher = useContext(SwitcherThemeContext)
-  const {favoriteCount,favoriteCountry} = useAppSelector(state=>state.country)
+  const {favoriteCountry} = useAppSelector(state=>state.favorite)
   return (
     <Box sx={{flexGrow:1,width:'100%',position:"sticky",top:0,left:0,zIndex:5}}>
       <AppBar position="sticky">
@@ -32,7 +32,7 @@ const NavBar = () => {
               <IconButton><Link to='/countries'><TravelExploreIcon/></Link></IconButton>
               <IconButton>
                 <Link to='/favorite' state={favoriteCountry}>
-                  <Badge badgeContent={favoriteCount} max={5} color="error">
+                  <Badge badgeContent={favoriteCountry.length} max={5} color="error">
                         <FavoriteIcon/>
                   </Badge>
                 </Link>

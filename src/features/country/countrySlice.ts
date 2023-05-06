@@ -1,16 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import CountryInfo, {CountryState, FavoriteCountry} from "../../app/countryDataMaintainer/countryInterface"
+import CountryInfo, {CountryState} from "../../app/countryDataMaintainer/countryInterface"
 import { getAllCountries, getCountriesByRegion, getCountryByName } from "../../app/dataService/countryAPI"
-
 
 const initialState:CountryState = {
     countryState: [],
     isLoading:false,
     isError:false,
     message:'',
-    favoriteCount:0,
-    favoriteCountry:[],
     searchQuery:''
 }
 
@@ -47,17 +44,6 @@ export const countrySlice = createSlice({
                     )
             }
         },
-
-        IncrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
-            state.favoriteCountry.push(action.payload.country)
-            state.favoriteCount += action.payload.count
-        },
-
-        DecrementFavorite:(state,action:PayloadAction<FavoriteCountry>)=>{
-            const index:number = state.favoriteCountry.findIndex(favorite=>favorite.name.official === action.payload.country.name.official)
-            state.favoriteCountry.splice(index,1)
-            state.favoriteCount -= action.payload.count  
-        }
 
     },
     extraReducers(builder) {
@@ -121,6 +107,6 @@ export const countrySlice = createSlice({
 
 })
 
-export const {searchByName,DecrementFavorite,IncrementFavorite,sortByPopulation,sortByCountryName} = countrySlice.actions
+export const {searchByName,sortByPopulation,sortByCountryName} = countrySlice.actions
 
 export default countrySlice.reducer

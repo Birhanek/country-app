@@ -41,7 +41,7 @@ const handleLocationExpanded = () => {
   setLocationExpand(!locationExpand)
 }
 
-  useEffect(()=>{
+useEffect(()=>{
   dispatch(getCountryByName(name))
 },[dispatch,name])
 

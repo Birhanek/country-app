@@ -42,9 +42,12 @@ export interface  CountryState {
     isLoading:boolean,
     isError:boolean,
     message?:string,
+    searchQuery:string,
+}
+
+export interface FavoriteState {
     favoriteCountry:CountryInfo[],
     favoriteCount:number,
-    searchQuery:string,
 }
 
 export enum Continents {

@@ -1,14 +1,14 @@
 import React from 'react'
 import { useAppSelector } from '../app/countryDataMaintainer/hooks'
-import CountryData from '../components/country/CountryData'
+import FavoriteData from '../components/country/FavoriteData'
 
 
 
 const Favorite = () => {
-  const {favoriteCountry} = useAppSelector(state=>state.country)
+  const {favoriteCountry} = useAppSelector(state=>state.favorite)
 
   const favoriteCountryData = favoriteCountry.map((favorite,index)=>{
-    return <CountryData key={index} index={index} country={favorite}/>
+    return <FavoriteData key={index} index={index} country={favorite}/>
   })
   return (
     <div className='country-details'>
@@ -30,7 +30,8 @@ const Favorite = () => {
       }
         </tbody>
   
-    </table></div>:
+    </table>
+    </div>:
     <p>No favorite country selected</p>
     
      }
