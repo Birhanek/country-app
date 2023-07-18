@@ -1,4 +1,4 @@
-# FRONT END PROJECT
+# Country Finder App
 
 ![React](https://img.shields.io/badge/React-v.18-blue)
 ![Redux toolkit](https://img.shields.io/badge/Redux-v.1.9-purple)
