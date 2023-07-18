@@ -5,50 +5,13 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-v.4.9-green)
 ![react-router-dom](https://img.shields.io/badge/ReactRouter-v.6.4-orange)
 
-The front end project is to practice React with TypeScript and Redux. Completing all requirement, you will get 20 points/ 20 points. Good luck and HAVE FUN !!!
-
-## How to run project
-
-1. Step 1: npm install
-2. Step 2: npm start
-
-## Logic Requirements (9 points)
-
-1. Fetch data from this API: `https://restcountries.com/v3.1/all`
-2. The user can search country by name:
-        ```Do the searching on the available data from fetching the All data ```
-3. Get country detail by this API: `https://restcountries.com/v3.1/name/{name}`
-4. When the user click to country name or a button it should show country detail
-5. The country detail should have name, region, population, flag and list of languages
-6. The user can add country to `Favorite` page
-7. When the user add a country to `Favorite` the favorite icon should change the color.
-8. Have a `Loading` page while fetching data
-9. Deploy the project
-
-## Styling Requirements (4 points)
-
-1. Font: `font-family: 'Nunito', sans-serif`
-2. Display data in table
-3. Navbar and Footer
-4. When the user add an country to `Favorite` page, you should show a message, for example: `A country just added to the favorite page`
-
-## Code style Requirements (6 points)
-
-1. Naming convention
-2. Clear file structure
-3. Divided the project to small components
-4. Clean code: no console.log, no dead code,
-5. Format code (Prettier - Code formatter)
-6. Separate import from your own file and the import from the package
-
-## Extra requirements (1 points)
-
-ONLY DO THIS PART WHEN YOU HAVE COMPLETED THE REQUIREMENTS PART
-
-1. Sorting by product name
-2. Sorting the country by population
-3. Add an extra page
-4. Add pagination
+This project is basically done to demositrate the knowledge and skill on reactjs. Country finder app is based on a backend API: `https://restcountries.com/v3.1/all`.
+##Functionalities
+        1. A user can search country by name
+        2. When a user click on a country name or button it display the detail information of the country
+        3. A user can add country to a favorite page
+        4. have a loading part when it fetches a data from the backend 
+        5. When a page is refershed the country under the favorite page stays there
 
 ## Useful sources
 
